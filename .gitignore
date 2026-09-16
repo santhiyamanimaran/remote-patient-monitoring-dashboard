@@ -1,4 +1,20 @@
-venv/
+# Python
 __pycache__/
-*.pyc
-database/*.db
+*.py[cod]
+*.pyo
+# Virtual environment
+venv/
+.venv/
+# Database
+*.db
+*.sqlite
+*.sqlite3
+# Environment variables
+.env
+# VS Code
+.vscode/
+# Frontend
+frontend/node_modules/
+# OS
+.DS_Store
+Thumbs.db
