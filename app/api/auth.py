@@ -2,12 +2,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from app.core.database import SessionLocal
 from app.models.user import User
-from app.security import hash_password, verify_password
-from app.security import (
-    create_access_token,
-    hash_password,
-    verify_password,
-)
+from app.security import create_access_token, hash_password, verify_password
 router = APIRouter(
     prefix="/auth",
     tags=["Authentication"]
@@ -51,7 +46,6 @@ def register_user(data: RegisterRequest):
         }
     finally:
         db.close()
-@router.post("/login")
 @router.post("/login")
 def login_user(data: LoginRequest):
     db = SessionLocal()
