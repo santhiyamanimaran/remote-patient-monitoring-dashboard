@@ -1,15 +1,13 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
 from app.core.database import Base, engine
-
 from app.models.patient import Patient
 from app.models.vital import VitalReading
 from app.models.alert import Alert
 from app.models.contact import EmergencyContact
 from app.models.notification import Notification
 from app.models.user import User
-
+from app.models.audit_log import AuditLog
 from app.api.patients import router as patient_router
 from app.vitals.routes import router as vital_router
 from app.api.alerts import router as alert_router
@@ -32,13 +30,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-# Create database tables
 Base.metadata.create_all(bind=engine)
-
-
-# API Routers
 app.include_router(patient_router)
 app.include_router(vital_router)
 app.include_router(alert_router)
